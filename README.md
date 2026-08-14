@@ -66,6 +66,7 @@ Images are served locally from `frontend/public/images` (Vite). Catalog defaults
 
 ## Hosted links
 
+- GitHub: https://github.com/yeghia-k/CampusTix
 - Frontend: _add after Netlify deploy_
 - Catalog API: _add after Render deploy_
 - Booking API: _add after Render deploy_
