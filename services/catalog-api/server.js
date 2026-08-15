@@ -4,10 +4,10 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 4001;
 
-// Cloud image host: Netlify static files at /images (set after frontend deploy).
-// Example: IMAGE_BASE_URL=https://your-app.netlify.app/images
+// Cloud image host: Netlify static files at /images
+// Override with IMAGE_BASE_URL if the Netlify URL changes.
 const IMAGE_BASE = (
-  process.env.IMAGE_BASE_URL || "http://localhost:5173/images"
+  process.env.IMAGE_BASE_URL || "https://campustix-app.netlify.app/images"
 ).replace(/\/$/, "");
 
 function imageUrl(file) {

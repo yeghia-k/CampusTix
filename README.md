@@ -67,9 +67,10 @@ Images are served locally from `frontend/public/images` (Vite). Catalog defaults
 ## Hosted links
 
 - GitHub: https://github.com/yeghia-k/CampusTix
-- Frontend: _add after Netlify deploy_
-- Catalog API: _add after Render deploy_
-- Booking API: _add after Render deploy_
+- Frontend: https://campustix-app.netlify.app
+- Catalog API: https://campustix.onrender.com
+- Booking API: https://campustix-1.onrender.com
+- Serverless confirm: https://campustix-app.netlify.app/.netlify/functions/confirm-booking
 
 ## Rubric checklist
 
