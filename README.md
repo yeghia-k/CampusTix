@@ -2,6 +2,8 @@
 
 Campus event ticket booking app for the Cloud IT final project.
 
+Dockerized microservices orchestrated/hosted on Render.
+
 ## Architecture (microservices)
 
 | Service | Role | Host |
@@ -11,12 +13,28 @@ Campus event ticket booking app for the Cloud IT final project.
 | `services/booking-api/` | Bookings REST API (Docker) | Render |
 | `netlify/functions/confirm-booking.js` | Serverless confirmation | Netlify Function |
 | `frontend/public/images/` | Event images (cloud static storage) | Netlify CDN |
+| `k8s/*.yaml` | Kubernetes Deployment + Service manifests | Orchestration config |
 
 ```
 Browser → Netlify (frontend + /images/*)
        → Render catalog-api  (GET /events)
        → Render booking-api  (POST/GET /bookings)
        → Netlify Function    (POST confirm-booking)
+```
+
+## Container orchestration
+
+**Live hosting:** Docker images run as cloud services on **Render** (build, deploy, restart).
+
+**Kubernetes manifests** (also in the repo for orchestration config):
+
+- [`k8s/catalog-api-deployment.yaml`](k8s/catalog-api-deployment.yaml)
+- [`k8s/booking-api-deployment.yaml`](k8s/booking-api-deployment.yaml)
+
+Each file defines a `Deployment` + `Service`. To apply on any cluster (after building/pushing images):
+
+```bash
+kubectl apply -f k8s/
 ```
 
 ## Local run
@@ -78,6 +96,6 @@ Images are served locally from `frontend/public/images` (Vite). Catalog defaults
 - [x] Microservice FE + 2 backend services
 - [x] REST between FE and BE
 - [x] Dockerfiles for backend services
-- [x] Cloud container hosting (Render)
+- [x] Cloud container hosting (Render) + Kubernetes manifests in `k8s/`
 - [x] Serverless component (Netlify Function)
 - [x] Cloud image storage (Netlify CDN / static hosting)
